@@ -433,6 +433,139 @@
     color:var(--faint);
   }
 
+  /* ---------- fit ---------- */
+  .fit .head{ max-width:58rem; margin-bottom:3.25rem; }
+  .fit h2{
+    font-size:clamp(2.3rem, 4.8vw, 3.8rem);
+    line-height:1.08;
+    margin-top:1.5rem;
+  }
+  .fit .head p{ margin-top:1.5rem; color:var(--muted); max-width:54ch; }
+  .fit .cols{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:clamp(2rem, 5vw, 5rem);
+  }
+  .fit h3{ font-size:1.45rem; margin-bottom:1.1rem; }
+  .fit ul{ list-style:none; }
+  .fit li{
+    padding:1.1rem 0;
+    border-top:1px solid var(--line-soft);
+    color:var(--muted);
+    font-size:.95rem;
+    display:flex; gap:1rem; align-items:baseline;
+  }
+  .fit li::before{
+    font-size:.8rem;
+    flex:0 0 auto;
+  }
+  .fit .yes li::before{ content:"\2726"; color:var(--accent); }
+  .fit .no li::before{ content:"\00D7"; color:var(--faint); }
+
+  /* ---------- terms strip ---------- */
+  .terms{
+    padding:0;
+    background:var(--ground-2);
+    border-top:1px solid var(--line-soft);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .terms .wrap{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+  }
+  .terms .cell{
+    padding:2.5rem clamp(1rem, 2.5vw, 2.5rem);
+    border-left:1px solid var(--line-soft);
+  }
+  .terms .cell:first-child{ border-left:0; padding-left:0; }
+  .terms .cell h3{ font-size:1.35rem; margin-bottom:.5rem; }
+  .terms .cell p{ color:var(--muted); font-size:.88rem; max-width:30ch; }
+
+  /* ---------- faq ---------- */
+  .faq .wrap{ max-width:58rem; }
+  .faq h2{
+    font-size:clamp(2.3rem, 4.8vw, 3.8rem);
+    line-height:1.08;
+    margin:1.5rem 0 2.75rem;
+  }
+  .faq details{ border-top:1px solid var(--line); }
+  .faq details:last-of-type{ border-bottom:1px solid var(--line); }
+  .faq summary{
+    cursor:pointer;
+    list-style:none;
+    display:flex; justify-content:space-between; align-items:baseline; gap:2rem;
+    padding:1.6rem 0;
+    font-family:var(--display);
+    font-size:1.3rem;
+  }
+  .faq summary::-webkit-details-marker{ display:none; }
+  .faq summary::after{
+    content:"+";
+    font-family:var(--body);
+    font-size:1.1rem;
+    color:var(--faint);
+    transition:transform .3s ease;
+    flex:0 0 auto;
+  }
+  .faq details[open] summary::after{ transform:rotate(45deg); }
+  .faq details > p{
+    color:var(--muted);
+    font-size:.95rem;
+    max-width:58ch;
+    padding-bottom:1.8rem;
+  }
+  .faq summary:focus-visible{ outline:1px solid var(--accent); outline-offset:4px; }
+
+  /* ---------- steps ---------- */
+  .steps .head{ max-width:58rem; margin-bottom:2rem; }
+  .steps h2{
+    font-size:clamp(2.3rem, 4.8vw, 3.8rem);
+    line-height:1.08;
+    margin-top:1.5rem;
+  }
+
+  /* ---------- application form ---------- */
+  .form{
+    max-width:34rem;
+    margin:0 auto;
+    text-align:left;
+  }
+  .form .field{ margin-bottom:1.7rem; }
+  .form label{
+    display:block;
+    font-size:.62rem;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+    color:var(--muted);
+    font-weight:500;
+    margin-bottom:.45rem;
+  }
+  .form input, .form textarea{
+    width:100%;
+    background:transparent;
+    border:0;
+    border-bottom:1px solid var(--line);
+    border-radius:0;
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:1rem;
+    padding:.55rem 0;
+    transition:border-color .3s ease;
+  }
+  .form input:focus, .form textarea:focus{
+    outline:none;
+    border-color:var(--accent);
+  }
+  .form textarea{ resize:vertical; min-height:5.5rem; }
+  .form ::placeholder{ color:var(--faint); opacity:1; }
+  .form .cta-btn{
+    width:100%;
+    border:0;
+    cursor:pointer;
+    margin-top:.6rem;
+    font-family:var(--body);
+  }
+
   /* ---------- cta ---------- */
   .cta{
     text-align:center;
@@ -500,6 +633,10 @@
     .protocol li{ grid-template-columns:1fr; gap:.5rem; }
     .strip .ph{ aspect-ratio:16/10; }
     .clock{ display:none; }
+    .fit .cols{ grid-template-columns:1fr; gap:2.5rem; }
+    .terms .wrap{ grid-template-columns:1fr; }
+    .terms .cell{ border-left:0; padding:1.6rem 0; border-top:1px solid var(--line-soft); }
+    .terms .cell:first-child{ border-top:0; }
 
     /* cards become a swipeable rail */
     .cards .grid{
@@ -526,6 +663,8 @@
     .phase{ grid-template-columns:2.75rem 1fr; gap:1rem; padding:1.9rem 0; }
     .phase .no{ font-size:1.35rem; }
     .protocol .name{ font-size:1.15rem; }
+    .fit h2, .faq h2, .steps h2{ font-size:2.05rem; }
+    .faq summary{ font-size:1.12rem; }
     .cta h2{ font-size:2.35rem; }
     .cta-btn{ display:block; max-width:22rem; margin:0 auto; }
     footer{ padding-bottom:calc(3.5rem + env(safe-area-inset-bottom)); }
@@ -565,7 +704,7 @@
   <div class="wrap">
     <p class="eyebrow rv">Who we work with</p>
     <h2 class="rv d1">Few clients. <em>Full attention.</em></h2>
-    <p class="rv d2">We grow your audience, run your presence, and protect your name.</p>
+    <p class="rv d2">We build your brand, grow your audience, and protect your name.</p>
   </div>
 </section>
 
@@ -625,7 +764,7 @@
     <div class="left">
       <p class="eyebrow rv">The Hybrid Model</p>
       <h2 class="rv d1">Human instinct. <em>Machine tempo.</em></h2>
-      <p class="rv d2">Nobody can be online 24/7. The Hybrid Model is our answer: human direction, AI-assisted production. Your presence stays constant without taking over your life.</p>
+      <p class="rv d2">Nobody can be online 24/7. The Hybrid Model is our answer: human direction, proprietary production systems. Your presence stays constant without taking over your life.</p>
     </div>
     <div class="right">
       <div class="phase rv">
@@ -641,7 +780,7 @@
         <div>
           <span class="tag">Machine</span>
           <h3>Production</h3>
-          <p>Our own AI system carries the cadence, keeping content and presence at a pace no human team could hold alone. The feed never goes quiet.</p>
+          <p>Our proprietary engine carries the cadence, keeping content and presence at a pace no ordinary team could hold. The feed never goes quiet.</p>
         </div>
       </div>
       <div class="phase rv d2">
@@ -694,14 +833,148 @@
   </div>
 </section>
 
+<section class="fit">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow rv">The fit</p>
+      <h2 class="rv d1">We&rsquo;re not for <em>everyone.</em></h2>
+      <p class="rv d2">A small roster is the whole point. Every yes costs us a no, so we choose carefully, and we&rsquo;re honest about who thrives here.</p>
+    </div>
+    <div class="cols">
+      <div class="rv">
+        <h3>You, if</h3>
+        <ul class="yes">
+          <li>You want a real brand, not a lucky month.</li>
+          <li>You can show up consistently, even when motivation doesn&rsquo;t.</li>
+          <li>You take direction and speak your mind. We want partners, not passengers.</li>
+          <li>You&rsquo;re in this for years, whether you have 500 followers or 500K.</li>
+        </ul>
+      </div>
+      <div class="rv d1">
+        <h3>Not you, if</h3>
+        <ul class="no">
+          <li>You want fast money more than a lasting name.</li>
+          <li>This is your backup plan. It always shows.</li>
+          <li>You want the virality without the work behind it.</li>
+          <li>You&rsquo;re not ready to be seen.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="terms">
+  <div class="wrap">
+    <div class="cell rv">
+      <h3>Nothing upfront.</h3>
+      <p>No signup fees, no monthly fees. We earn a share of what we grow, so we only win when you do.</p>
+    </div>
+    <div class="cell rv d1">
+      <h3>No lock-in.</h3>
+      <p>Leave whenever you want. No penalties, no clawbacks. We keep creators by performing, not by trapping them.</p>
+    </div>
+    <div class="cell rv d2">
+      <h3>Two days.</h3>
+      <p>Every application is read and answered by a person, within two days. No bots, no silence.</p>
+    </div>
+  </div>
+</div>
+
+<section class="faq">
+  <div class="wrap">
+    <p class="eyebrow rv">Questions</p>
+    <h2 class="rv d1">Asked <em>often.</em> Answered straight.</h2>
+    <details class="rv">
+      <summary>Do I need a big following to apply?</summary>
+      <p>No. We sign potential, not vanity metrics. What matters is your look, your voice, and how serious you are about building something. Where you are today is a starting line, not a verdict.</p>
+    </details>
+    <details class="rv">
+      <summary>How much of my time does this take?</summary>
+      <p>Less than you&rsquo;re spending now. You create and stay you. We carry strategy, scheduling, growth, engagement, and protection. Most of our creators put in a few focused hours a week.</p>
+    </details>
+    <details class="rv">
+      <summary>What does it cost?</summary>
+      <p>Nothing upfront, ever. We work on a revenue share, so our money arrives only after yours does. If you don&rsquo;t grow, we don&rsquo;t get paid. That keeps us honest.</p>
+    </details>
+    <details class="rv">
+      <summary>Can I keep my private life private?</summary>
+      <p>Yes. Discretion is the default, not an add-on. Your legal identity travels no further than the contract, and what you choose to keep private stays private. See how we handle protection above.</p>
+    </details>
+    <details class="rv">
+      <summary>Which platforms do you work on?</summary>
+      <p>Wherever your audience lives. We build the brand across every platform that matters, so no single algorithm owns your career.</p>
+    </details>
+    <details class="rv">
+      <summary>How do you keep a feed that active?</summary>
+      <p>Proprietary systems, run under human direction. Our production engine keeps the cadence while real people make every call that touches your name. The process is ours to worry about. The results are yours.</p>
+    </details>
+    <details class="rv">
+      <summary>Am I locked into a contract?</summary>
+      <p>No. There&rsquo;s no lock-in and no exit penalty. If we&rsquo;re not making your life bigger and easier, you walk, and we make that easy too.</p>
+    </details>
+  </div>
+</section>
+
+<section class="steps">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow rv">What happens next</p>
+      <h2 class="rv d1">From application to <em>day one.</em></h2>
+    </div>
+    <div class="phase rv">
+      <span class="no">01</span>
+      <div>
+        <h3>Apply</h3>
+        <p>Two minutes, four questions. No pitch deck, no pressure.</p>
+      </div>
+    </div>
+    <div class="phase rv d1">
+      <span class="no">02</span>
+      <div>
+        <h3>We talk</h3>
+        <p>Within two days you hear from a person, and we set up a real conversation about you, your goals, and whether we fit. Ask us anything.</p>
+      </div>
+    </div>
+    <div class="phase rv d2">
+      <span class="no">03</span>
+      <div>
+        <h3>You decide</h3>
+        <p>If it&rsquo;s a yes on both sides, you get a plan, a team, and a start date. If it&rsquo;s not, we say so straight and you lose nothing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <div class="ones" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 
 <section class="cta" id="apply">
   <div class="wrap">
     <p class="eyebrow rv">Applications</p>
     <h2 class="rv d1">We take on <em>a few</em> creators a year.</h2>
-    <p class="rv d2">If you&rsquo;re serious about growing, write to us. You&rsquo;ll hear back within two days.</p>
-    <a class="cta-btn rv d3" href="mailto:admin@the1111mgmt.com?subject=Application%20%E2%80%94%2011%3A11MGMT">Apply</a>
+    <p class="rv d2">If you&rsquo;re serious about growing, this takes two minutes. You&rsquo;ll hear back within two days.</p>
+    <form class="form rv d3" action="https://formsubmit.co/admin@the1111mgmt.com" method="POST">
+      <input type="hidden" name="_subject" value="New application: 11:11MGMT">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="field">
+        <label for="f-name">Name</label>
+        <input id="f-name" name="name" type="text" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="f-email">Email</label>
+        <input id="f-email" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="f-socials">Socials</label>
+        <input id="f-socials" name="socials" type="text" placeholder="@handles or links" required>
+      </div>
+      <div class="field">
+        <label for="f-about">Where you are, and where you want to go</label>
+        <textarea id="f-about" name="about" rows="4"></textarea>
+      </div>
+      <button class="cta-btn" type="submit">Send application</button>
+    </form>
     <small class="rv d3">Every reply comes from a person.</small>
   </div>
 </section>
