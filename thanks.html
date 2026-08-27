@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Received &middot; 11:11MGMT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --ground:#0B0B0C;
+    --ink:#F2F2EF;
+    --muted:#989893;
+    --faint:#5E5E5A;
+    --line:rgba(242,242,239,.16);
+    --accent:#FFFFFF;
+    --display:"Instrument Serif", Georgia, serif;
+    --body:"Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{
+    background:
+      radial-gradient(55% 42% at 50% 58%, rgba(255,255,255,.08), transparent 70%),
+      var(--ground);
+    color:var(--ink);
+    font-family:var(--body);
+    line-height:1.7;
+    min-height:100svh;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    text-align:center;
+    padding:2rem 1.5rem;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wordmark{
+    font-family:var(--display);
+    font-size:1.45rem;
+    color:var(--ink);
+    text-decoration:none;
+    position:absolute; top:1.6rem; left:clamp(1.25rem, 5vw, 3rem);
+  }
+  .wordmark span{
+    font-family:var(--body);
+    font-size:.62rem;
+    letter-spacing:.32em;
+    color:var(--muted);
+    margin-left:.6rem;
+    vertical-align:.2em;
+    font-weight:500;
+  }
+  .ones{ display:flex; gap:.5rem; justify-content:center; height:3.25rem; margin-bottom:2.5rem; }
+  .ones i{ width:1px; background:var(--line); display:block; }
+  .ones i:nth-child(2), .ones i:nth-child(4){ transform:translateY(.6rem); }
+  h1{
+    font-family:var(--display);
+    font-weight:400;
+    font-size:clamp(2.6rem, 7vw, 4.5rem);
+    line-height:1.05;
+  }
+  h1 em{ font-style:italic; color:var(--accent); }
+  p{ color:var(--muted); max-width:40ch; margin:1.4rem auto 0; }
+  a.back{
+    display:inline-block;
+    margin-top:2.75rem;
+    font-size:.7rem; letter-spacing:.24em; text-transform:uppercase;
+    color:var(--ink); text-decoration:none; font-weight:500;
+    border-bottom:1px solid var(--accent);
+    padding-bottom:.35rem;
+    transition:color .3s ease;
+  }
+  a.back:hover{ color:var(--accent); }
+</style>
+</head>
+<body>
+<a class="wordmark" href="/">11:11<span>MGMT</span></a>
+<div>
+  <div class="ones" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <h1>Received. <em>Watch your inbox.</em></h1>
+  <p>A person will read this, not a system. If we see what we&rsquo;re looking for, you&rsquo;ll hear from us within two days.</p>
+  <a class="back" href="/">Back to the site</a>
+</div>
+</body>
+</html>

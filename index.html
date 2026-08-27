@@ -4,6 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="11:11MGMT is a talent management agency for creators. Small roster, full service.">
+<link rel="canonical" href="https://the1111mgmt.com/">
+<meta property="og:title" content="11:11MGMT">
+<meta property="og:description" content="A talent management agency for creators. Small roster, full service.">
+<meta property="og:url" content="https://the1111mgmt.com/">
+<meta property="og:type" content="website">
 <title>11:11MGMT</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap">
@@ -565,6 +570,13 @@
     margin-top:.6rem;
     font-family:var(--body);
   }
+  .form-note{
+    color:var(--muted);
+    font-size:.85rem;
+    text-align:center;
+    margin-top:1.1rem;
+    min-height:1.2em;
+  }
 
   /* ---------- cta ---------- */
   .cta{
@@ -955,7 +967,9 @@
     <form class="form rv d3" action="https://formsubmit.co/admin@the1111mgmt.com" method="POST">
       <input type="hidden" name="_subject" value="New application: 11:11MGMT">
       <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_captcha" value="true">
+      <input type="hidden" name="_next" value="https://the1111mgmt.com/thanks.html">
+      <input type="hidden" name="_blacklist" value="crypto investment, bitcoin wallet, SEO services, guest post, backlinks, buy followers, casino, loan offer, click this link, http://bit.ly">
       <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="field">
         <label for="f-name">Name</label>
@@ -974,6 +988,7 @@
         <textarea id="f-about" name="about" rows="4"></textarea>
       </div>
       <button class="cta-btn" type="submit">Send application</button>
+      <p class="form-note" role="status" aria-live="polite"></p>
     </form>
     <small class="rv d3">Every reply comes from a person.</small>
   </div>
@@ -1009,6 +1024,25 @@
   }
   tick();
   setInterval(tick, 1000);
+
+  // application form: throttle repeat submissions, ignore instant bot submits
+  var appForm = document.querySelector('.form');
+  if(appForm){
+    var formNote = appForm.querySelector('.form-note');
+    var openedAt = Date.now();
+    var WAIT = 30 * 60 * 1000;
+    appForm.addEventListener('submit', function(e){
+      if(Date.now() - openedAt < 4000){ e.preventDefault(); return; }
+      var last = 0;
+      try{ last = +localStorage.getItem('app_sent') || 0; }catch(err){}
+      if(Date.now() - last < WAIT){
+        e.preventDefault();
+        if(formNote){ formNote.textContent = 'You already sent one. Give us a moment to read it.'; }
+        return;
+      }
+      try{ localStorage.setItem('app_sent', String(Date.now())); }catch(err){}
+    });
+  }
 
   // hero parallax fade on scroll
   var heroLoad = document.getElementById('heroLoad');
