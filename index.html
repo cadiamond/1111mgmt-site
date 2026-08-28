@@ -271,9 +271,13 @@
     display:block; width:100%; height:100%;
     object-fit:cover;
   }
+  .scene video{
+    filter:blur(3px);
+    transform:scale(1.02);
+  }
   .scene .veil{
     position:absolute; inset:0;
-    background:rgba(8,8,9,.45);
+    background:rgba(8,8,9,.58);
   }
   .scene::after{
     content:"";
