@@ -420,6 +420,12 @@
   /* ---------- wide strip ---------- */
   .strip{ padding:0; }
   .strip .ph{ aspect-ratio:21/9; }
+  .strip .ph img{ object-position:50% 30%; }
+  .strip .ph::after{
+    content:"";
+    position:absolute; inset:0;
+    background:rgba(8,8,9,.45);
+  }
 
   /* ---------- protection ---------- */
   .protection .head{ max-width:58rem; margin-bottom:3.5rem; }
@@ -830,7 +836,7 @@
 <section class="strip">
   <div class="wrap rv">
     <figure class="ph">
-      <img loading="lazy" decoding="async" alt="Two creators at sunset with the hills behind them" src="assets/strip-pool.jpg">
+      <img loading="lazy" decoding="async" alt="Five creators in black blindfolds, one with a finger to her lips" src="assets/strip-blindfold.jpg">
     </figure>
   </div>
 </section>
