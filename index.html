@@ -267,6 +267,14 @@
     background:var(--ground-2);
   }
   .scene > .ph img{ object-position:50% 15%; }
+  .ph video{
+    display:block; width:100%; height:100%;
+    object-fit:cover;
+  }
+  .scene .veil{
+    position:absolute; inset:0;
+    background:rgba(8,8,9,.45);
+  }
   .scene::after{
     content:"";
     position:absolute; inset:0;
@@ -711,7 +719,8 @@
 
 <section class="scene">
   <figure class="ph">
-    <img alt="Three 11:11 creators at a penthouse window above the city at night" src="assets/scene-night.jpg">
+    <video src="assets/scene-reel.mp4" autoplay muted loop playsinline preload="metadata" poster="assets/scene-poster.jpg" aria-label="Sunset over the city from an infinity pool, and creators getting ready for the night"></video>
+    <div class="veil" aria-hidden="true"></div>
   </figure>
   <div class="wrap">
     <p class="eyebrow rv">Who we work with</p>
@@ -1020,6 +1029,13 @@
   }
   tick();
   setInterval(tick, 1000);
+
+  // pause background video for reduced-motion users
+  var sceneVideo = document.querySelector('.scene video');
+  if(sceneVideo && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    sceneVideo.removeAttribute('autoplay');
+    sceneVideo.pause();
+  }
 
   // application form: throttle repeat submissions, ignore instant bot submits
   var appForm = document.querySelector('.form');
