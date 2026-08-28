@@ -419,12 +419,20 @@
 
   /* ---------- wide strip ---------- */
   .strip{ padding:0; }
-  .strip .ph{ aspect-ratio:21/9; }
+  .strip .ph{ aspect-ratio:21/9; background:var(--ground); }
   .strip .ph img{ object-position:50% 30%; }
   .strip .ph::after{
     content:"";
     position:absolute; inset:0;
-    background:radial-gradient(50% 50% at 50% 50%, transparent 45%, var(--ground) 100%);
+    background:radial-gradient(52% 55% at 50% 50%,
+      transparent 0%,
+      rgba(11,11,12,.05) 24%,
+      rgba(11,11,12,.18) 40%,
+      rgba(11,11,12,.40) 55%,
+      rgba(11,11,12,.66) 68%,
+      rgba(11,11,12,.86) 80%,
+      rgba(11,11,12,.97) 91%,
+      var(--ground) 100%);
   }
 
   /* ---------- protection ---------- */
