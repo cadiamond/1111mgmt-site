@@ -1,0 +1,24 @@
+User-agent: *
+Disallow: /casting.html
+Disallow: /thanks.html
+
+# AdsBot ignores the wildcard group above and must be named explicitly.
+User-agent: AdsBot-Google
+Disallow: /casting.html
+
+User-agent: AdsBot-Google-Mobile
+Disallow: /casting.html
+
+User-agent: AdsBot-Google-Mobile-Apps
+Disallow: /casting.html
+
+User-agent: Google-Extended
+Disallow: /casting.html
+
+User-agent: GPTBot
+Disallow: /casting.html
+
+User-agent: CCBot
+Disallow: /casting.html
+
+Sitemap: https://the1111mgmt.com/sitemap.xml

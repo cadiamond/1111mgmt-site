@@ -3,12 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="robots" content="noindex, nofollow">
-<meta name="description" content="11:11MGMT is casting creators for representation.">
-<title>Casting &middot; 11:11MGMT</title>
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="referrer" content="no-referrer">
+<title>11:11MGMT</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap">
-
 <style>
   :root{
     --ground:#0B0B0C;
@@ -154,9 +153,19 @@
     transition:color .3s ease;
   }
   .apply-link:hover{ color:var(--accent); }
-  .apply-link:focus-visible, .wordmark:focus-visible{
+  .apply-link:focus-visible, .wordmark:focus-visible, .nav-link:focus-visible{
     outline:1px solid var(--accent); outline-offset:4px;
   }
+
+  .nav-link{
+    font-size:.7rem; letter-spacing:.24em; text-transform:uppercase;
+    color:var(--muted); text-decoration:none; font-weight:500;
+    display:inline-block;
+    padding:.6rem 0 .35rem;
+    border-bottom:1px solid transparent;
+    transition:color .3s ease, border-color .3s ease;
+  }
+  .nav-link:hover{ color:var(--ink); border-bottom-color:var(--line); }
 
   /* ---------- hero ---------- */
   .hero{
@@ -808,6 +817,7 @@
     .protocol li{ grid-template-columns:1fr; gap:.5rem; }
     .strip .ph{ aspect-ratio:16/10; }
     .clock{ display:none; }
+    .header-right{ gap:1.4rem; }
     .fit .cols{ grid-template-columns:1fr; gap:2.5rem; }
     .svc-grid{ grid-template-columns:1fr; }
     .terms .wrap{ grid-template-columns:1fr; }
@@ -863,243 +873,129 @@
   }
   .casting-hero .tagline{ margin-top:1.75rem; }
   .casting-hero .sub{ max-width:56ch; margin-top:1.5rem; }
+
+  /* ---------- age gate ---------- */
+  .gate{
+    position:fixed; inset:0; z-index:100;
+    background:var(--ground);
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    text-align:center;
+    padding:2rem 1.5rem;
+  }
+  .gate .mark{
+    font-family:var(--display);
+    font-size:1.6rem;
+    color:var(--ink);
+    margin-bottom:2.75rem;
+  }
+  .gate .mark span{
+    font-family:var(--body); font-size:.62rem; letter-spacing:.32em;
+    color:var(--muted); margin-left:.6rem; vertical-align:.2em; font-weight:500;
+  }
+  .gate h1{
+    font-family:var(--display); font-weight:400;
+    font-size:clamp(1.9rem, 5vw, 3rem);
+    line-height:1.15; margin-bottom:1.1rem;
+  }
+  .gate p{
+    color:var(--muted); max-width:38ch; margin:0 auto 2.75rem;
+    font-size:.95rem;
+  }
+  .gate .row{ display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; }
+  .gate button{
+    font-family:var(--body);
+    font-size:.72rem; letter-spacing:.26em; text-transform:uppercase;
+    font-weight:600; cursor:pointer;
+    padding:1.1rem 2.6rem; border:1px solid var(--accent);
+    transition:background .3s ease, color .3s ease;
+  }
+  .gate .enter{ background:var(--accent); color:var(--ground); border:0; }
+  .gate .enter:hover{ background:#D9D9D5; }
+  .gate .leave{ background:transparent; color:var(--muted); border-color:var(--line); }
+  .gate .leave:hover{ color:var(--ink); border-color:var(--line-strong, var(--accent)); }
+  .gate button:focus-visible{ outline:1px solid var(--accent); outline-offset:4px; }
+  .gate small{
+    display:block; margin-top:2.5rem;
+    font-size:.66rem; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--faint);
+  }
 </style>
 </head>
 <body>
 
-<div class="grain" aria-hidden="true"></div>
-
-<header>
-  <div class="wrap">
-    <a class="wordmark" href="/">11:11<span>MGMT</span></a>
-    <div class="header-right">
-      <span class="clock" id="clock" title="Local time">--:--</span>
-      <a class="apply-link" href="#apply">Apply</a>
-    </div>
+<div class="gate" id="gate">
+  <span class="mark">11:11<span>MGMT</span></span>
+  <h1>This page is for creators 18 and over.</h1>
+  <p>Casting information for prospective talent. Please confirm your age to continue.</p>
+  <div class="row">
+    <button class="enter" id="gateEnter" type="button">I am 18 or older</button>
+    <button class="leave" id="gateLeave" type="button">Take me back</button>
   </div>
-</header>
-
-<section class="hero casting-hero">
-  <div class="hero-load" id="heroLoad">
-    <p class="eyebrow">Casting &middot; Now open</p>
-    <h1 class="casting-title">Ready to join <em>11:11?</em></h1>
-    <p class="tagline">We&rsquo;re looking for creators ready to build a serious brand.</p>
-    <p class="sub">We&rsquo;re accepting applications from adult creators ready to grow and monetize on OnlyFans, Fanvue, and other paid subscription platforms. Whether you&rsquo;re already earning or starting from scratch, we bring the growth systems, content strategy, audience engagement, privacy protection, and management team behind you.</p>
-    <a class="scene-btn" href="#apply">Apply to 11:11</a>
-  </div>
-</section>
-
-<div class="marquee" aria-hidden="true">
-  <div class="track">
-    <div class="group">
-      <span><i>&#10022;</i>Los Angeles</span><span><i>&#10022;</i>Miami</span><span><i>&#10022;</i>Las Vegas</span><span><i>&#10022;</i>11:11</span>
-      <span><i>&#10022;</i>Los Angeles</span><span><i>&#10022;</i>Miami</span><span><i>&#10022;</i>Las Vegas</span><span><i>&#10022;</i>11:11</span>
-      <span><i>&#10022;</i>Los Angeles</span><span><i>&#10022;</i>Miami</span><span><i>&#10022;</i>Las Vegas</span><span><i>&#10022;</i>11:11</span>
-    </div>
-    <div class="group">
-      <span><i>&#10022;</i>Los Angeles</span><span><i>&#10022;</i>Miami</span><span><i>&#10022;</i>Las Vegas</span><span><i>&#10022;</i>11:11</span>
-      <span><i>&#10022;</i>Los Angeles</span><span><i>&#10022;</i>Miami</span><span><i>&#10022;</i>Las Vegas</span><span><i>&#10022;</i>11:11</span>
-      <span><i>&#10022;</i>Los Angeles</span><span><i>&#10022;</i>Miami</span><span><i>&#10022;</i>Las Vegas</span><span><i>&#10022;</i>11:11</span>
-    </div>
-  </div>
+  <small>11:11MGMT &middot; Talent management</small>
 </div>
 
-<section class="fit">
-  <div class="wrap">
-    <div class="head">
-      <p class="eyebrow rv">Who we&rsquo;re looking for</p>
-      <h2 class="rv d1">18+ creators, <em>serious about building.</em></h2>
-      <p class="rv d2">We keep the roster small on purpose, because we put real resources behind every creator we sign. That means we are specific about who we take on.</p>
-    </div>
-    <div class="cols">
-      <div class="rv">
-        <h3>You, if</h3>
-        <ul class="yes">
-          <li>You&rsquo;re ready to create subscription content consistently.</li>
-          <li>You&rsquo;re comfortable monetizing through OnlyFans or Fanvue.</li>
-          <li>You&rsquo;re serious about growing a real social following.</li>
-          <li>You want a long-term personal brand, not a lucky month.</li>
-          <li>You&rsquo;re open to working with a dedicated management team.</li>
-        </ul>
-      </div>
-      <div class="rv d1">
-        <h3>Not you, if</h3>
-        <ul class="no">
-          <li>You want fast money more than a lasting name.</li>
-          <li>This is your backup plan. It always shows.</li>
-          <li>You want the virality without the work behind it.</li>
-          <li>You&rsquo;re not ready to be seen.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="terms">
-  <div class="wrap">
-    <div class="cell rv">
-      <h3>Nothing upfront.</h3>
-      <p>No signup fees, no monthly fees. We earn a share of what we grow, so we only win when you do.</p>
-    </div>
-    <div class="cell rv d1">
-      <h3>No lock-in.</h3>
-      <p>Leave whenever you want. No penalties, no clawbacks. We keep creators by performing, not by trapping them.</p>
-    </div>
-    <div class="cell rv d2">
-      <h3>Limited spots.</h3>
-      <p>We keep the roster small so we can invest significant resources into every creator we select.</p>
-    </div>
-  </div>
-</div>
-
-<section class="steps">
-  <div class="wrap">
-    <div class="head">
-      <p class="eyebrow rv">What we bring</p>
-      <h2 class="rv d1">You create. <em>We build the business.</em></h2>
-    </div>
-    <div class="phase rv">
-      <span class="no">01</span>
-      <div>
-        <h3>Growth</h3>
-        <p>Our systems and growth team expand your audience across social, and drive subscribers to your paid platforms.</p>
-      </div>
-    </div>
-    <div class="phase rv d1">
-      <span class="no">02</span>
-      <div>
-        <h3>Subscription management</h3>
-        <p>Pricing, promotions, messaging, retention, and analytics on OnlyFans, Fanvue, and wherever else you earn.</p>
-      </div>
-    </div>
-    <div class="phase rv d2">
-      <span class="no">03</span>
-      <div>
-        <h3>Privacy and protection</h3>
-        <p>Leak detection, impersonation takedowns, and a hard separation between your public brand and your private identity.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="ones" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-
-<section class="cta" id="apply">
-  <div class="wrap">
-    <p class="eyebrow rv">Applications</p>
-    <h2 class="rv d1">We take on <em>a few</em> creators a year.</h2>
-    <p class="rv d2">If you&rsquo;re serious about growing, this takes two minutes. You&rsquo;ll hear back within two days.</p>
-    <form class="form rv d3" action="https://formsubmit.co/admin@the1111mgmt.com" method="POST">
-      <input type="hidden" name="_subject" value="New casting application: 11:11MGMT">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="true">
-      <input type="hidden" name="_next" value="https://the1111mgmt.com/thanks.html">
-      <input type="hidden" name="source" value="Casting page">
-      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <div class="field">
-        <label for="f-name">Name</label>
-        <input id="f-name" name="name" type="text" autocomplete="name" required>
-      </div>
-      <div class="field">
-        <label for="f-email">Email</label>
-        <input id="f-email" name="email" type="email" autocomplete="email" required>
-      </div>
-      <div class="field">
-        <label for="f-socials">Socials</label>
-        <input id="f-socials" name="socials" type="text" placeholder="@handles or links" required>
-      </div>
-      <div class="field">
-        <label for="f-paid">Do you already earn on OnlyFans or Fanvue?</label>
-        <select id="f-paid" name="paid_platform" required>
-          <option value="">Select one</option>
-          <option>Yes, currently earning</option>
-          <option>Account set up, not earning yet</option>
-          <option>Not yet, ready to start</option>
-        </select>
-      </div>
-      <div class="field">
-        <label for="f-following">Current following <span class="opt">optional</span></label>
-        <select id="f-following" name="following">
-          <option value="">Prefer not to say</option>
-          <option>Under 10K</option>
-          <option>10K to 50K</option>
-          <option>50K to 250K</option>
-          <option>250K to 1M</option>
-          <option>Over 1M</option>
-        </select>
-      </div>
-      <div class="field">
-        <label for="f-revenue">Current monthly revenue <span class="opt">optional</span></label>
-        <select id="f-revenue" name="monthly_revenue">
-          <option value="">Prefer not to say</option>
-          <option>Not earning yet</option>
-          <option>Under $5K</option>
-          <option>$5K to $20K</option>
-          <option>$20K to $50K</option>
-          <option>Over $50K</option>
-        </select>
-      </div>
-      <div class="field">
-        <label for="f-about">Where you are, and where you want to go</label>
-        <textarea id="f-about" name="about" rows="4"></textarea>
-      </div>
-      <label class="check">
-        <input type="checkbox" name="age_confirmed" value="Yes" required>
-        <span>I confirm I am 18 or older.</span>
-      </label>
-      <button class="cta-btn" type="submit">Send application</button>
-      <p class="form-note" role="status" aria-live="polite"></p>
-    </form>
-    <small class="rv d3">Every reply comes from a person.</small>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <span class="fm">11:11<span style="font-family:var(--body); font-size:.6rem; letter-spacing:.28em; margin-left:.5rem;">MGMT</span></span>
-    <span>Los Angeles &middot; Miami &middot; Las Vegas</span>
-    <a href="mailto:admin@the1111mgmt.com">admin@the1111mgmt.com</a>
-    <span>&copy; 2026 &middot; All rights reserved</span>
-  </div>
-</footer>
+<div id="content"></div>
 
 <script>
-  var obs = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
-    });
-  }, { threshold:.15, rootMargin:'0px 0px -5% 0px' });
-  document.querySelectorAll('.rv').forEach(function(el){ obs.observe(el); });
+(function(){
+  var PAYLOAD = "Cgo8ZGl2IGNsYXNzPSJncmFpbiIgYXJpYS1oaWRkZW49InRydWUiPjwvZGl2PgoKPGhlYWRlcj4KICA8ZGl2IGNsYXNzPSJ3cmFwIj4KICAgIDxhIGNsYXNzPSJ3b3JkbWFyayIgaHJlZj0iLyI+MTE6MTE8c3Bhbj5NR01UPC9zcGFuPjwvYT4KICAgIDxkaXYgY2xhc3M9ImhlYWRlci1yaWdodCI+CiAgICAgIDxzcGFuIGNsYXNzPSJjbG9jayIgaWQ9ImNsb2NrIiB0aXRsZT0iTG9jYWwgdGltZSI+LS06LS08L3NwYW4+CiAgICAgIDxhIGNsYXNzPSJhcHBseS1saW5rIiBocmVmPSIjYXBwbHkiPkFwcGx5PC9hPgogICAgPC9kaXY+CiAgPC9kaXY+CjwvaGVhZGVyPgoKPHNlY3Rpb24gY2xhc3M9Imhlcm8gY2FzdGluZy1oZXJvIj4KICA8ZGl2IGNsYXNzPSJoZXJvLWxvYWQiIGlkPSJoZXJvTG9hZCI+CiAgICA8cCBjbGFzcz0iZXllYnJvdyI+Q2FzdGluZyAmbWlkZG90OyBOb3cgb3BlbjwvcD4KICAgIDxoMSBjbGFzcz0iY2FzdGluZy10aXRsZSI+UmVhZHkgdG8gam9pbiA8ZW0+MTE6MTE/PC9lbT48L2gxPgogICAgPHAgY2xhc3M9InRhZ2xpbmUiPldlJnJzcXVvO3JlIGxvb2tpbmcgZm9yIGNyZWF0b3JzIHJlYWR5IHRvIGJ1aWxkIGEgc2VyaW91cyBicmFuZC48L3A+CiAgICA8cCBjbGFzcz0ic3ViIj5XZSZyc3F1bztyZSBhY2NlcHRpbmcgYXBwbGljYXRpb25zIGZyb20gYWR1bHQgY3JlYXRvcnMgcmVhZHkgdG8gZ3JvdyBhbmQgbW9uZXRpemUgb24gT25seUZhbnMsIEZhbnNseSwgYW5kIG90aGVyIHBhaWQgc3Vic2NyaXB0aW9uIHBsYXRmb3Jtcy4gV2hldGhlciB5b3UmcnNxdW87cmUgYWxyZWFkeSBlYXJuaW5nIG9yIHN0YXJ0aW5nIGZyb20gc2NyYXRjaCwgd2UgYnJpbmcgdGhlIGdyb3d0aCBzeXN0ZW1zLCBjb250ZW50IHN0cmF0ZWd5LCBhdWRpZW5jZSBlbmdhZ2VtZW50LCBwcml2YWN5IHByb3RlY3Rpb24sIGFuZCBtYW5hZ2VtZW50IHRlYW0gYmVoaW5kIHlvdS48L3A+CiAgICA8YSBjbGFzcz0ic2NlbmUtYnRuIiBocmVmPSIjYXBwbHkiPkFwcGx5IHRvIDExOjExPC9hPgogIDwvZGl2Pgo8L3NlY3Rpb24+Cgo8ZGl2IGNsYXNzPSJtYXJxdWVlIiBhcmlhLWhpZGRlbj0idHJ1ZSI+CiAgPGRpdiBjbGFzcz0idHJhY2siPgogICAgPGRpdiBjbGFzcz0iZ3JvdXAiPgogICAgICA8c3Bhbj48aT4mIzEwMDIyOzwvaT5Mb3MgQW5nZWxlczwvc3Bhbj48c3Bhbj48aT4mIzEwMDIyOzwvaT5NaWFtaTwvc3Bhbj48c3Bhbj48aT4mIzEwMDIyOzwvaT5MYXMgVmVnYXM8L3NwYW4+PHNwYW4+PGk+JiMxMDAyMjs8L2k+MTE6MTE8L3NwYW4+CiAgICAgIDxzcGFuPjxpPiYjMTAwMjI7PC9pPkxvcyBBbmdlbGVzPC9zcGFuPjxzcGFuPjxpPiYjMTAwMjI7PC9pPk1pYW1pPC9zcGFuPjxzcGFuPjxpPiYjMTAwMjI7PC9pPkxhcyBWZWdhczwvc3Bhbj48c3Bhbj48aT4mIzEwMDIyOzwvaT4xMToxMTwvc3Bhbj4KICAgICAgPHNwYW4+PGk+JiMxMDAyMjs8L2k+TG9zIEFuZ2VsZXM8L3NwYW4+PHNwYW4+PGk+JiMxMDAyMjs8L2k+TWlhbWk8L3NwYW4+PHNwYW4+PGk+JiMxMDAyMjs8L2k+TGFzIFZlZ2FzPC9zcGFuPjxzcGFuPjxpPiYjMTAwMjI7PC9pPjExOjExPC9zcGFuPgogICAgPC9kaXY+CiAgICA8ZGl2IGNsYXNzPSJncm91cCI+CiAgICAgIDxzcGFuPjxpPiYjMTAwMjI7PC9pPkxvcyBBbmdlbGVzPC9zcGFuPjxzcGFuPjxpPiYjMTAwMjI7PC9pPk1pYW1pPC9zcGFuPjxzcGFuPjxpPiYjMTAwMjI7PC9pPkxhcyBWZWdhczwvc3Bhbj48c3Bhbj48aT4mIzEwMDIyOzwvaT4xMToxMTwvc3Bhbj4KICAgICAgPHNwYW4+PGk+JiMxMDAyMjs8L2k+TG9zIEFuZ2VsZXM8L3NwYW4+PHNwYW4+PGk+JiMxMDAyMjs8L2k+TWlhbWk8L3NwYW4+PHNwYW4+PGk+JiMxMDAyMjs8L2k+TGFzIFZlZ2FzPC9zcGFuPjxzcGFuPjxpPiYjMTAwMjI7PC9pPjExOjExPC9zcGFuPgogICAgICA8c3Bhbj48aT4mIzEwMDIyOzwvaT5Mb3MgQW5nZWxlczwvc3Bhbj48c3Bhbj48aT4mIzEwMDIyOzwvaT5NaWFtaTwvc3Bhbj48c3Bhbj48aT4mIzEwMDIyOzwvaT5MYXMgVmVnYXM8L3NwYW4+PHNwYW4+PGk+JiMxMDAyMjs8L2k+MTE6MTE8L3NwYW4+CiAgICA8L2Rpdj4KICA8L2Rpdj4KPC9kaXY+Cgo8c2VjdGlvbiBjbGFzcz0iZml0Ij4KICA8ZGl2IGNsYXNzPSJ3cmFwIj4KICAgIDxkaXYgY2xhc3M9ImhlYWQiPgogICAgICA8cCBjbGFzcz0iZXllYnJvdyBydiI+V2hvIHdlJnJzcXVvO3JlIGxvb2tpbmcgZm9yPC9wPgogICAgICA8aDIgY2xhc3M9InJ2IGQxIj4xOCsgY3JlYXRvcnMsIDxlbT5zZXJpb3VzIGFib3V0IGJ1aWxkaW5nLjwvZW0+PC9oMj4KICAgICAgPHAgY2xhc3M9InJ2IGQyIj5XZSBrZWVwIHRoZSByb3N0ZXIgc21hbGwgb24gcHVycG9zZSwgYmVjYXVzZSB3ZSBwdXQgcmVhbCByZXNvdXJjZXMgYmVoaW5kIGV2ZXJ5IGNyZWF0b3Igd2Ugc2lnbi4gVGhhdCBtZWFucyB3ZSBhcmUgc3BlY2lmaWMgYWJvdXQgd2hvIHdlIHRha2Ugb24uPC9wPgogICAgPC9kaXY+CiAgICA8ZGl2IGNsYXNzPSJjb2xzIj4KICAgICAgPGRpdiBjbGFzcz0icnYiPgogICAgICAgIDxoMz5Zb3UsIGlmPC9oMz4KICAgICAgICA8dWwgY2xhc3M9InllcyI+CiAgICAgICAgICA8bGk+WW91JnJzcXVvO3JlIHJlYWR5IHRvIGNyZWF0ZSBzdWJzY3JpcHRpb24gY29udGVudCBjb25zaXN0ZW50bHkuPC9saT4KICAgICAgICAgIDxsaT5Zb3UmcnNxdW87cmUgY29tZm9ydGFibGUgbW9uZXRpemluZyB0aHJvdWdoIE9ubHlGYW5zIG9yIEZhbnNseS48L2xpPgogICAgICAgICAgPGxpPllvdSZyc3F1bztyZSBzZXJpb3VzIGFib3V0IGdyb3dpbmcgYSByZWFsIHNvY2lhbCBmb2xsb3dpbmcuPC9saT4KICAgICAgICAgIDxsaT5Zb3Ugd2FudCBhIGxvbmctdGVybSBwZXJzb25hbCBicmFuZCwgbm90IGEgbHVja3kgbW9udGguPC9saT4KICAgICAgICAgIDxsaT5Zb3UmcnNxdW87cmUgb3BlbiB0byB3b3JraW5nIHdpdGggYSBkZWRpY2F0ZWQgbWFuYWdlbWVudCB0ZWFtLjwvbGk+CiAgICAgICAgPC91bD4KICAgICAgPC9kaXY+CiAgICAgIDxkaXYgY2xhc3M9InJ2IGQxIj4KICAgICAgICA8aDM+Tm90IHlvdSwgaWY8L2gzPgogICAgICAgIDx1bCBjbGFzcz0ibm8iPgogICAgICAgICAgPGxpPllvdSB3YW50IGZhc3QgbW9uZXkgbW9yZSB0aGFuIGEgbGFzdGluZyBuYW1lLjwvbGk+CiAgICAgICAgICA8bGk+VGhpcyBpcyB5b3VyIGJhY2t1cCBwbGFuLiBJdCBhbHdheXMgc2hvd3MuPC9saT4KICAgICAgICAgIDxsaT5Zb3Ugd2FudCB0aGUgdmlyYWxpdHkgd2l0aG91dCB0aGUgd29yayBiZWhpbmQgaXQuPC9saT4KICAgICAgICAgIDxsaT5Zb3UmcnNxdW87cmUgbm90IHJlYWR5IHRvIGJlIHNlZW4uPC9saT4KICAgICAgICA8L3VsPgogICAgICA8L2Rpdj4KICAgIDwvZGl2PgogIDwvZGl2Pgo8L3NlY3Rpb24+Cgo8ZGl2IGNsYXNzPSJ0ZXJtcyI+CiAgPGRpdiBjbGFzcz0id3JhcCI+CiAgICA8ZGl2IGNsYXNzPSJjZWxsIHJ2Ij4KICAgICAgPGgzPk5vdGhpbmcgdXBmcm9udC48L2gzPgogICAgICA8cD5ObyBzaWdudXAgZmVlcywgbm8gbW9udGhseSBmZWVzLiBXZSBlYXJuIGEgc2hhcmUgb2Ygd2hhdCB3ZSBncm93LCBzbyB3ZSBvbmx5IHdpbiB3aGVuIHlvdSBkby48L3A+CiAgICA8L2Rpdj4KICAgIDxkaXYgY2xhc3M9ImNlbGwgcnYgZDEiPgogICAgICA8aDM+Tm8gbG9jay1pbi48L2gzPgogICAgICA8cD5MZWF2ZSB3aGVuZXZlciB5b3Ugd2FudC4gTm8gcGVuYWx0aWVzLCBubyBjbGF3YmFja3MuIFdlIGtlZXAgY3JlYXRvcnMgYnkgcGVyZm9ybWluZywgbm90IGJ5IHRyYXBwaW5nIHRoZW0uPC9wPgogICAgPC9kaXY+CiAgICA8ZGl2IGNsYXNzPSJjZWxsIHJ2IGQyIj4KICAgICAgPGgzPkxpbWl0ZWQgc3BvdHMuPC9oMz4KICAgICAgPHA+V2Uga2VlcCB0aGUgcm9zdGVyIHNtYWxsIHNvIHdlIGNhbiBpbnZlc3Qgc2lnbmlmaWNhbnQgcmVzb3VyY2VzIGludG8gZXZlcnkgY3JlYXRvciB3ZSBzZWxlY3QuPC9wPgogICAgPC9kaXY+CiAgPC9kaXY+CjwvZGl2PgoKPHNlY3Rpb24gY2xhc3M9InN0ZXBzIj4KICA8ZGl2IGNsYXNzPSJ3cmFwIj4KICAgIDxkaXYgY2xhc3M9ImhlYWQiPgogICAgICA8cCBjbGFzcz0iZXllYnJvdyBydiI+V2hhdCB3ZSBicmluZzwvcD4KICAgICAgPGgyIGNsYXNzPSJydiBkMSI+WW91IGNyZWF0ZS4gPGVtPldlIGJ1aWxkIHRoZSBidXNpbmVzcy48L2VtPjwvaDI+CiAgICA8L2Rpdj4KICAgIDxkaXYgY2xhc3M9InBoYXNlIHJ2Ij4KICAgICAgPHNwYW4gY2xhc3M9Im5vIj4wMTwvc3Bhbj4KICAgICAgPGRpdj4KICAgICAgICA8aDM+R3Jvd3RoPC9oMz4KICAgICAgICA8cD5PdXIgc3lzdGVtcyBhbmQgZ3Jvd3RoIHRlYW0gZXhwYW5kIHlvdXIgYXVkaWVuY2UgYWNyb3NzIHNvY2lhbCwgYW5kIGRyaXZlIHN1YnNjcmliZXJzIHRvIHlvdXIgcGFpZCBwbGF0Zm9ybXMuPC9wPgogICAgICA8L2Rpdj4KICAgIDwvZGl2PgogICAgPGRpdiBjbGFzcz0icGhhc2UgcnYgZDEiPgogICAgICA8c3BhbiBjbGFzcz0ibm8iPjAyPC9zcGFuPgogICAgICA8ZGl2PgogICAgICAgIDxoMz5TdWJzY3JpcHRpb24gbWFuYWdlbWVudDwvaDM+CiAgICAgICAgPHA+UHJpY2luZywgcHJvbW90aW9ucywgbWVzc2FnaW5nLCByZXRlbnRpb24sIGFuZCBhbmFseXRpY3Mgb24gT25seUZhbnMsIEZhbnNseSwgYW5kIHdoZXJldmVyIGVsc2UgeW91IGVhcm4uPC9wPgogICAgICA8L2Rpdj4KICAgIDwvZGl2PgogICAgPGRpdiBjbGFzcz0icGhhc2UgcnYgZDIiPgogICAgICA8c3BhbiBjbGFzcz0ibm8iPjAzPC9zcGFuPgogICAgICA8ZGl2PgogICAgICAgIDxoMz5Qcml2YWN5IGFuZCBwcm90ZWN0aW9uPC9oMz4KICAgICAgICA8cD5MZWFrIGRldGVjdGlvbiwgaW1wZXJzb25hdGlvbiB0YWtlZG93bnMsIGFuZCBhIGhhcmQgc2VwYXJhdGlvbiBiZXR3ZWVuIHlvdXIgcHVibGljIGJyYW5kIGFuZCB5b3VyIHByaXZhdGUgaWRlbnRpdHkuPC9wPgogICAgICA8L2Rpdj4KICAgIDwvZGl2PgogIDwvZGl2Pgo8L3NlY3Rpb24+Cgo8ZGl2IGNsYXNzPSJvbmVzIiBhcmlhLWhpZGRlbj0idHJ1ZSI+PGk+PC9pPjxpPjwvaT48aT48L2k+PGk+PC9pPjwvZGl2PgoKPHNlY3Rpb24gY2xhc3M9ImN0YSIgaWQ9ImFwcGx5Ij4KICA8ZGl2IGNsYXNzPSJ3cmFwIj4KICAgIDxwIGNsYXNzPSJleWVicm93IHJ2Ij5BcHBsaWNhdGlvbnM8L3A+CiAgICA8aDIgY2xhc3M9InJ2IGQxIj5XZSB0YWtlIG9uIDxlbT5hIGZldzwvZW0+IGNyZWF0b3JzIGEgeWVhci48L2gyPgogICAgPHAgY2xhc3M9InJ2IGQyIj5JZiB5b3UmcnNxdW87cmUgc2VyaW91cyBhYm91dCBncm93aW5nLCB0aGlzIHRha2VzIHR3byBtaW51dGVzLiBZb3UmcnNxdW87bGwgaGVhciBiYWNrIHdpdGhpbiB0d28gZGF5cy48L3A+CiAgICA8Zm9ybSBjbGFzcz0iZm9ybSBydiBkMyIgYWN0aW9uPSJodHRwczovL2Zvcm1zdWJtaXQuY28vYWRtaW5AdGhlMTExMW1nbXQuY29tIiBtZXRob2Q9IlBPU1QiPgogICAgICA8aW5wdXQgdHlwZT0iaGlkZGVuIiBuYW1lPSJfc3ViamVjdCIgdmFsdWU9Ik5ldyBjYXN0aW5nIGFwcGxpY2F0aW9uOiAxMToxMU1HTVQiPgogICAgICA8aW5wdXQgdHlwZT0iaGlkZGVuIiBuYW1lPSJfdGVtcGxhdGUiIHZhbHVlPSJ0YWJsZSI+CiAgICAgIDxpbnB1dCB0eXBlPSJoaWRkZW4iIG5hbWU9Il9jYXB0Y2hhIiB2YWx1ZT0idHJ1ZSI+CiAgICAgIDxpbnB1dCB0eXBlPSJoaWRkZW4iIG5hbWU9Il9uZXh0IiB2YWx1ZT0iaHR0cHM6Ly90aGUxMTExbWdtdC5jb20vdGhhbmtzLmh0bWwiPgogICAgICA8aW5wdXQgdHlwZT0iaGlkZGVuIiBuYW1lPSJzb3VyY2UiIHZhbHVlPSJDYXN0aW5nIHBhZ2UiPgogICAgICA8aW5wdXQgdHlwZT0idGV4dCIgbmFtZT0iX2hvbmV5IiBzdHlsZT0iZGlzcGxheTpub25lIiB0YWJpbmRleD0iLTEiIGF1dG9jb21wbGV0ZT0ib2ZmIiBhcmlhLWhpZGRlbj0idHJ1ZSI+CiAgICAgIDxkaXYgY2xhc3M9ImZpZWxkIj4KICAgICAgICA8bGFiZWwgZm9yPSJmLW5hbWUiPk5hbWU8L2xhYmVsPgogICAgICAgIDxpbnB1dCBpZD0iZi1uYW1lIiBuYW1lPSJuYW1lIiB0eXBlPSJ0ZXh0IiBhdXRvY29tcGxldGU9Im5hbWUiIHJlcXVpcmVkPgogICAgICA8L2Rpdj4KICAgICAgPGRpdiBjbGFzcz0iZmllbGQiPgogICAgICAgIDxsYWJlbCBmb3I9ImYtZW1haWwiPkVtYWlsPC9sYWJlbD4KICAgICAgICA8aW5wdXQgaWQ9ImYtZW1haWwiIG5hbWU9ImVtYWlsIiB0eXBlPSJlbWFpbCIgYXV0b2NvbXBsZXRlPSJlbWFpbCIgcmVxdWlyZWQ+CiAgICAgIDwvZGl2PgogICAgICA8ZGl2IGNsYXNzPSJmaWVsZCI+CiAgICAgICAgPGxhYmVsIGZvcj0iZi1zb2NpYWxzIj5Tb2NpYWxzPC9sYWJlbD4KICAgICAgICA8aW5wdXQgaWQ9ImYtc29jaWFscyIgbmFtZT0ic29jaWFscyIgdHlwZT0idGV4dCIgcGxhY2Vob2xkZXI9IkBoYW5kbGVzIG9yIGxpbmtzIiByZXF1aXJlZD4KICAgICAgPC9kaXY+CiAgICAgIDxkaXYgY2xhc3M9ImZpZWxkIj4KICAgICAgICA8bGFiZWwgZm9yPSJmLXBhaWQiPkRvIHlvdSBhbHJlYWR5IGVhcm4gb24gT25seUZhbnMgb3IgRmFuc2x5PzwvbGFiZWw+CiAgICAgICAgPHNlbGVjdCBpZD0iZi1wYWlkIiBuYW1lPSJwYWlkX3BsYXRmb3JtIiByZXF1aXJlZD4KICAgICAgICAgIDxvcHRpb24gdmFsdWU9IiI+U2VsZWN0IG9uZTwvb3B0aW9uPgogICAgICAgICAgPG9wdGlvbj5ZZXMsIGN1cnJlbnRseSBlYXJuaW5nPC9vcHRpb24+CiAgICAgICAgICA8b3B0aW9uPkFjY291bnQgc2V0IHVwLCBub3QgZWFybmluZyB5ZXQ8L29wdGlvbj4KICAgICAgICAgIDxvcHRpb24+Tm90IHlldCwgcmVhZHkgdG8gc3RhcnQ8L29wdGlvbj4KICAgICAgICA8L3NlbGVjdD4KICAgICAgPC9kaXY+CiAgICAgIDxkaXYgY2xhc3M9ImZpZWxkIj4KICAgICAgICA8bGFiZWwgZm9yPSJmLWZvbGxvd2luZyI+Q3VycmVudCBmb2xsb3dpbmcgPHNwYW4gY2xhc3M9Im9wdCI+b3B0aW9uYWw8L3NwYW4+PC9sYWJlbD4KICAgICAgICA8c2VsZWN0IGlkPSJmLWZvbGxvd2luZyIgbmFtZT0iZm9sbG93aW5nIj4KICAgICAgICAgIDxvcHRpb24gdmFsdWU9IiI+UHJlZmVyIG5vdCB0byBzYXk8L29wdGlvbj4KICAgICAgICAgIDxvcHRpb24+VW5kZXIgMTBLPC9vcHRpb24+CiAgICAgICAgICA8b3B0aW9uPjEwSyB0byA1MEs8L29wdGlvbj4KICAgICAgICAgIDxvcHRpb24+NTBLIHRvIDI1MEs8L29wdGlvbj4KICAgICAgICAgIDxvcHRpb24+MjUwSyB0byAxTTwvb3B0aW9uPgogICAgICAgICAgPG9wdGlvbj5PdmVyIDFNPC9vcHRpb24+CiAgICAgICAgPC9zZWxlY3Q+CiAgICAgIDwvZGl2PgogICAgICA8ZGl2IGNsYXNzPSJmaWVsZCI+CiAgICAgICAgPGxhYmVsIGZvcj0iZi1yZXZlbnVlIj5DdXJyZW50IG1vbnRobHkgcmV2ZW51ZSA8c3BhbiBjbGFzcz0ib3B0Ij5vcHRpb25hbDwvc3Bhbj48L2xhYmVsPgogICAgICAgIDxzZWxlY3QgaWQ9ImYtcmV2ZW51ZSIgbmFtZT0ibW9udGhseV9yZXZlbnVlIj4KICAgICAgICAgIDxvcHRpb24gdmFsdWU9IiI+UHJlZmVyIG5vdCB0byBzYXk8L29wdGlvbj4KICAgICAgICAgIDxvcHRpb24+Tm90IGVhcm5pbmcgeWV0PC9vcHRpb24+CiAgICAgICAgICA8b3B0aW9uPlVuZGVyICQ1Szwvb3B0aW9uPgogICAgICAgICAgPG9wdGlvbj4kNUsgdG8gJDIwSzwvb3B0aW9uPgogICAgICAgICAgPG9wdGlvbj4kMjBLIHRvICQ1MEs8L29wdGlvbj4KICAgICAgICAgIDxvcHRpb24+T3ZlciAkNTBLPC9vcHRpb24+CiAgICAgICAgPC9zZWxlY3Q+CiAgICAgIDwvZGl2PgogICAgICA8ZGl2IGNsYXNzPSJmaWVsZCI+CiAgICAgICAgPGxhYmVsIGZvcj0iZi1hYm91dCI+V2hlcmUgeW91IGFyZSwgYW5kIHdoZXJlIHlvdSB3YW50IHRvIGdvPC9sYWJlbD4KICAgICAgICA8dGV4dGFyZWEgaWQ9ImYtYWJvdXQiIG5hbWU9ImFib3V0IiByb3dzPSI0Ij48L3RleHRhcmVhPgogICAgICA8L2Rpdj4KICAgICAgPGxhYmVsIGNsYXNzPSJjaGVjayI+CiAgICAgICAgPGlucHV0IHR5cGU9ImNoZWNrYm94IiBuYW1lPSJhZ2VfY29uZmlybWVkIiB2YWx1ZT0iWWVzIiByZXF1aXJlZD4KICAgICAgICA8c3Bhbj5JIGNvbmZpcm0gSSBhbSAxOCBvciBvbGRlci48L3NwYW4+CiAgICAgIDwvbGFiZWw+CiAgICAgIDxidXR0b24gY2xhc3M9ImN0YS1idG4iIHR5cGU9InN1Ym1pdCI+U2VuZCBhcHBsaWNhdGlvbjwvYnV0dG9uPgogICAgICA8cCBjbGFzcz0iZm9ybS1ub3RlIiByb2xlPSJzdGF0dXMiIGFyaWEtbGl2ZT0icG9saXRlIj48L3A+CiAgICA8L2Zvcm0+CiAgICA8c21hbGwgY2xhc3M9InJ2IGQzIj5FdmVyeSByZXBseSBjb21lcyBmcm9tIGEgcGVyc29uLjwvc21hbGw+CiAgPC9kaXY+Cjwvc2VjdGlvbj4KCjxmb290ZXI+CiAgPGRpdiBjbGFzcz0id3JhcCI+CiAgICA8c3BhbiBjbGFzcz0iZm0iPjExOjExPHNwYW4gc3R5bGU9ImZvbnQtZmFtaWx5OnZhcigtLWJvZHkpOyBmb250LXNpemU6LjZyZW07IGxldHRlci1zcGFjaW5nOi4yOGVtOyBtYXJnaW4tbGVmdDouNXJlbTsiPk1HTVQ8L3NwYW4+PC9zcGFuPgogICAgPHNwYW4+TG9zIEFuZ2VsZXMgJm1pZGRvdDsgTWlhbWkgJm1pZGRvdDsgTGFzIFZlZ2FzPC9zcGFuPgogICAgPGEgaHJlZj0ibWFpbHRvOmFkbWluQHRoZTExMTFtZ210LmNvbSI+YWRtaW5AdGhlMTExMW1nbXQuY29tPC9hPgogICAgPHNwYW4+JmNvcHk7IDIwMjYgJm1pZGRvdDsgQWxsIHJpZ2h0cyByZXNlcnZlZDwvc3Bhbj4KICA8L2Rpdj4KPC9mb290ZXI+Cgo8c2NyaXB0PgogIHZhciBvYnMgPSBuZXcgSW50ZXJzZWN0aW9uT2JzZXJ2ZXIoZnVuY3Rpb24oZW50cmllcyl7CiAgICBlbnRyaWVzLmZvckVhY2goZnVuY3Rpb24oZSl7CiAgICAgIGlmKGUuaXNJbnRlcnNlY3RpbmcpeyBlLnRhcmdldC5jbGFzc0xpc3QuYWRkKCdpbicpOyBvYnMudW5vYnNlcnZlKGUudGFyZ2V0KTsgfQogICAgfSk7CiAgfSwgeyB0aHJlc2hvbGQ6LjE1LCByb290TWFyZ2luOicwcHggMHB4IC01JSAwcHgnIH0pOwogIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoJy5ydicpLmZvckVhY2goZnVuY3Rpb24oZWwpeyBvYnMub2JzZXJ2ZShlbCk7IH0pOwoKICB2YXIgY2xvY2sgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnY2xvY2snKTsKICBmdW5jdGlvbiB0aWNrKCl7CiAgICB2YXIgZCA9IG5ldyBEYXRlKCk7CiAgICB2YXIgaCA9IGQuZ2V0SG91cnMoKSwgbSA9IGQuZ2V0TWludXRlcygpOwogICAgdmFyIGhoID0gKChoICUgMTIpIHx8IDEyKTsKICAgIGNsb2NrLnRleHRDb250ZW50ID0gaGggKyAnOicgKyAobSA8IDEwID8gJzAnICsgbSA6IG0pOwogICAgY2xvY2suY2xhc3NMaXN0LnRvZ2dsZSgnYWxpZ25lZCcsIChoICUgMTIgPT09IDExKSAmJiAobSA9PT0gMTEpKTsKICB9CiAgdGljaygpOwogIHNldEludGVydmFsKHRpY2ssIDEwMDApOwoKICB2YXIgYXBwRm9ybSA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoJy5mb3JtJyk7CiAgaWYoYXBwRm9ybSl7CiAgICB2YXIgZm9ybU5vdGUgPSBhcHBGb3JtLnF1ZXJ5U2VsZWN0b3IoJy5mb3JtLW5vdGUnKTsKICAgIHZhciBvcGVuZWRBdCA9IERhdGUubm93KCk7CiAgICB2YXIgV0FJVCA9IDMwICogNjAgKiAxMDAwOwogICAgYXBwRm9ybS5hZGRFdmVudExpc3RlbmVyKCdzdWJtaXQnLCBmdW5jdGlvbihlKXsKICAgICAgaWYoRGF0ZS5ub3coKSAtIG9wZW5lZEF0IDwgNDAwMCl7IGUucHJldmVudERlZmF1bHQoKTsgcmV0dXJuOyB9CiAgICAgIHZhciBsYXN0ID0gMDsKICAgICAgdHJ5eyBsYXN0ID0gK2xvY2FsU3RvcmFnZS5nZXRJdGVtKCdhcHBfc2VudCcpIHx8IDA7IH1jYXRjaChlcnIpe30KICAgICAgaWYoRGF0ZS5ub3coKSAtIGxhc3QgPCBXQUlUKXsKICAgICAgICBlLnByZXZlbnREZWZhdWx0KCk7CiAgICAgICAgaWYoZm9ybU5vdGUpeyBmb3JtTm90ZS50ZXh0Q29udGVudCA9ICdZb3UgYWxyZWFkeSBzZW50IG9uZS4gR2l2ZSB1cyBhIG1vbWVudCB0byByZWFkIGl0Lic7IH0KICAgICAgICByZXR1cm47CiAgICAgIH0KICAgICAgdHJ5eyBsb2NhbFN0b3JhZ2Uuc2V0SXRlbSgnYXBwX3NlbnQnLCBTdHJpbmcoRGF0ZS5ub3coKSkpOyB9Y2F0Y2goZXJyKXt9CiAgICB9KTsKICB9Cjwvc2NyaXB0PgoK";
+  var gate = document.getElementById('gate');
+  var content = document.getElementById('content');
 
-  var clock = document.getElementById('clock');
-  function tick(){
-    var d = new Date();
-    var h = d.getHours(), m = d.getMinutes();
-    var hh = ((h % 12) || 12);
-    clock.textContent = hh + ':' + (m < 10 ? '0' + m : m);
-    clock.classList.toggle('aligned', (h % 12 === 11) && (m === 11));
-  }
-  tick();
-  setInterval(tick, 1000);
+  function wire(){
+    // Content is injected only after the visitor opts in, so reveal it
+    // outright. A scroll observer does not reliably fire on nodes added
+    // in the same tick, which would leave the page blank.
+    document.querySelectorAll('.rv').forEach(function(el){ el.classList.add('in'); });
 
-  var appForm = document.querySelector('.form');
-  if(appForm){
-    var formNote = appForm.querySelector('.form-note');
-    var openedAt = Date.now();
-    var WAIT = 30 * 60 * 1000;
-    appForm.addEventListener('submit', function(e){
-      if(Date.now() - openedAt < 4000){ e.preventDefault(); return; }
-      var last = 0;
-      try{ last = +localStorage.getItem('app_sent') || 0; }catch(err){}
-      if(Date.now() - last < WAIT){
-        e.preventDefault();
-        if(formNote){ formNote.textContent = 'You already sent one. Give us a moment to read it.'; }
-        return;
-      }
-      try{ localStorage.setItem('app_sent', String(Date.now())); }catch(err){}
-    });
+    var clock = document.getElementById('clock');
+    if(clock){
+      var tick = function(){
+        var d = new Date(), h = d.getHours(), m = d.getMinutes();
+        clock.textContent = ((h % 12) || 12) + ':' + (m < 10 ? '0' + m : m);
+        clock.classList.toggle('aligned', (h % 12 === 11) && (m === 11));
+      };
+      tick();
+      setInterval(tick, 1000);
+    }
+
+    var form = document.querySelector('.form');
+    if(form){
+      var note = form.querySelector('.form-note');
+      var openedAt = Date.now();
+      form.addEventListener('submit', function(e){
+        if(Date.now() - openedAt < 4000){ e.preventDefault(); return; }
+        var last = 0;
+        try{ last = +localStorage.getItem('app_sent') || 0; }catch(err){}
+        if(Date.now() - last < 1800000){
+          e.preventDefault();
+          if(note){ note.textContent = 'You already sent one. Give us a moment to read it.'; }
+          return;
+        }
+        try{ localStorage.setItem('app_sent', String(Date.now())); }catch(err){}
+      });
+    }
   }
+
+  function reveal(){
+    content.innerHTML = decodeURIComponent(escape(atob(PAYLOAD)));
+    gate.remove();
+    wire();
+  }
+
+  document.getElementById('gateEnter').addEventListener('click', function(){
+    try{ sessionStorage.setItem('age_ok', '1'); }catch(err){}
+    reveal();
+  });
+  document.getElementById('gateLeave').addEventListener('click', function(){
+    window.location.href = '/';
+  });
+
+  try{
+    if(sessionStorage.getItem('age_ok') === '1'){ reveal(); }
+  }catch(err){}
+})();
 </script>
-
 </body>
 </html>
