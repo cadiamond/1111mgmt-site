@@ -711,6 +711,9 @@
     .cards .grid{
       display:flex;
       overflow-x:auto;
+      overflow-y:hidden;
+      touch-action:pan-x;
+      overscroll-behavior-x:contain;
       scroll-snap-type:x mandatory;
       gap:1rem;
       margin:0 calc(-1 * clamp(1.25rem, 5vw, 3rem));
