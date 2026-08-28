@@ -272,7 +272,7 @@
     object-fit:cover;
   }
   .scene video{
-    filter:blur(4.8px);
+    filter:blur(3.6px);
     transform:scale(1.04);
   }
   .scene .veil{
@@ -314,9 +314,13 @@
     background:var(--ground-2);
   }
   .track{
-    display:flex; gap:3.5rem;
+    display:flex;
     width:max-content;
     animation:scroll 30s linear infinite;
+  }
+  .track .group{
+    display:flex; gap:3.5rem;
+    padding-right:3.5rem;
   }
   .track span{
     font-size:.72rem; letter-spacing:.3em; text-transform:uppercase;
@@ -735,10 +739,16 @@
 
 <div class="marquee" aria-hidden="true">
   <div class="track">
-    <span><i>&#10022;</i>Los Angeles</span><span><i>&#10022;</i>Las Vegas</span><span><i>&#10022;</i>Online, everywhere</span><span><i>&#10022;</i>11:11</span>
-    <span><i>&#10022;</i>Los Angeles</span><span><i>&#10022;</i>Las Vegas</span><span><i>&#10022;</i>Online, everywhere</span><span><i>&#10022;</i>11:11</span>
-    <span><i>&#10022;</i>Los Angeles</span><span><i>&#10022;</i>Las Vegas</span><span><i>&#10022;</i>Online, everywhere</span><span><i>&#10022;</i>11:11</span>
-    <span><i>&#10022;</i>Los Angeles</span><span><i>&#10022;</i>Las Vegas</span><span><i>&#10022;</i>Online, everywhere</span><span><i>&#10022;</i>11:11</span>
+    <div class="group">
+      <span><i>&#10022;</i>Los Angeles</span><span><i>&#10022;</i>Miami</span><span><i>&#10022;</i>Las Vegas</span><span><i>&#10022;</i>11:11</span>
+      <span><i>&#10022;</i>Los Angeles</span><span><i>&#10022;</i>Miami</span><span><i>&#10022;</i>Las Vegas</span><span><i>&#10022;</i>11:11</span>
+      <span><i>&#10022;</i>Los Angeles</span><span><i>&#10022;</i>Miami</span><span><i>&#10022;</i>Las Vegas</span><span><i>&#10022;</i>11:11</span>
+    </div>
+    <div class="group">
+      <span><i>&#10022;</i>Los Angeles</span><span><i>&#10022;</i>Miami</span><span><i>&#10022;</i>Las Vegas</span><span><i>&#10022;</i>11:11</span>
+      <span><i>&#10022;</i>Los Angeles</span><span><i>&#10022;</i>Miami</span><span><i>&#10022;</i>Las Vegas</span><span><i>&#10022;</i>11:11</span>
+      <span><i>&#10022;</i>Los Angeles</span><span><i>&#10022;</i>Miami</span><span><i>&#10022;</i>Las Vegas</span><span><i>&#10022;</i>11:11</span>
+    </div>
   </div>
 </div>
 
