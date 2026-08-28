@@ -419,20 +419,46 @@
 
   /* ---------- wide strip ---------- */
   .strip{ padding:0; }
-  .strip .ph{ aspect-ratio:21/9; background:var(--ground); }
-  .strip .ph img{ object-position:50% 30%; }
-  .strip .ph::after{
-    content:"";
-    position:absolute; inset:0;
-    background:radial-gradient(52% 55% at 50% 50%,
+  .strip .ph{
+    aspect-ratio:21/9;
+    background:transparent;
+    -webkit-mask-image:linear-gradient(180deg,
       transparent 0%,
-      rgba(11,11,12,.05) 24%,
-      rgba(11,11,12,.18) 40%,
-      rgba(11,11,12,.40) 55%,
-      rgba(11,11,12,.66) 68%,
-      rgba(11,11,12,.86) 80%,
-      rgba(11,11,12,.97) 91%,
-      var(--ground) 100%);
+      rgba(0,0,0,.35) 8%,
+      #000 22%,
+      #000 50%,
+      rgba(0,0,0,.75) 68%,
+      rgba(0,0,0,.35) 82%,
+      rgba(0,0,0,.10) 91%,
+      transparent 100%);
+    mask-image:linear-gradient(180deg,
+      transparent 0%,
+      rgba(0,0,0,.35) 8%,
+      #000 22%,
+      #000 50%,
+      rgba(0,0,0,.75) 68%,
+      rgba(0,0,0,.35) 82%,
+      rgba(0,0,0,.10) 91%,
+      transparent 100%);
+  }
+  .strip .ph img{
+    object-position:50% 30%;
+    -webkit-mask-image:radial-gradient(54% 70% at 50% 42%,
+      #000 0%,
+      #000 24%,
+      rgba(0,0,0,.88) 42%,
+      rgba(0,0,0,.62) 58%,
+      rgba(0,0,0,.32) 72%,
+      rgba(0,0,0,.10) 86%,
+      transparent 97%);
+    mask-image:radial-gradient(54% 70% at 50% 42%,
+      #000 0%,
+      #000 24%,
+      rgba(0,0,0,.88) 42%,
+      rgba(0,0,0,.62) 58%,
+      rgba(0,0,0,.32) 72%,
+      rgba(0,0,0,.10) 86%,
+      transparent 97%);
   }
 
   /* ---------- protection ---------- */
